@@ -1,0 +1,21 @@
+Import('env')
+
+target_file = 'sdl-test.out'
+src_files = Glob('entrypoint/*.cpp')
+include_dirs = [ '.' ]
+
+# Linker
+# env['LINKFLAGS']='-lSDL -lstdc++'
+# env['LIBPATH']='/usr/lib/i386-linux-gnu/'
+# Library('foo', ['f1.c', 'f2.c', 'f3.c']
+# Program('prog.c', LIBS=['foo', 'bar'], LIBPATH='.')
+
+libs_names = [ 'stdc++', 'SDL', 'SDL_image', 'GL', 'GLU' ]
+
+
+# It will compile to object files and link them
+env.Program(
+    target = target_file,
+    source = src_files,
+    LIBS = libs_names,
+    CPPPATH = include_dirs)

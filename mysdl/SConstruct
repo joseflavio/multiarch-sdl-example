@@ -1,0 +1,24 @@
+
+# VariantDir(variant_dir='build', src_dir='src', duplicate=0)
+
+env = DefaultEnvironment()
+
+# Color output
+import os
+env['ENV']['TERM'] = os.environ['TERM']
+
+# Compiler
+env['CC']='clang'
+env['CXX']='clang++'
+env['CXXFLAGS']='-Werror -Wreturn-type -Wall -Weverything -pedantic'
+
+env.SConscript(
+    dirs=['src'],
+    exports='env',
+    variant_dir='build',
+    src_dir='src',
+    duplicate=0)
+
+
+
+
